@@ -1,0 +1,9 @@
+com.example.gesing
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+font font1
+font font2
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme_Gesing

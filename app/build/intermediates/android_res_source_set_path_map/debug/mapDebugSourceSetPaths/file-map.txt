@@ -1,0 +1,8 @@
+com.example.gesing.app-pngs-0 /home/marvel/AndroidStudioProjects/gesing/app/build/generated/res/pngs/debug
+com.example.gesing.app-updated_navigation_xml-1 /home/marvel/AndroidStudioProjects/gesing/app/build/generated/updated_navigation_xml/debug
+com.example.gesing.app-packageDebugResources-2 /home/marvel/AndroidStudioProjects/gesing/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.gesing.app-packageDebugResources-3 /home/marvel/AndroidStudioProjects/gesing/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.gesing.app-debug-4 /home/marvel/AndroidStudioProjects/gesing/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.gesing.app-debug-5 /home/marvel/AndroidStudioProjects/gesing/app/src/debug/res
+com.example.gesing.app-main-6 /home/marvel/AndroidStudioProjects/gesing/app/src/main/res
+gradleHome-0 /home/marvel/.gradle

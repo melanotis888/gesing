@@ -3,6 +3,24 @@ package com.example.gesing.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Сутність бази даних для зберігання глобальних налаштувань дизайну додатка.
+ *
+ * @property id Ідентифікатор конфігурації (завжди 1).
+ * @property fontSize Розмір шрифту в sp.
+ * @property fontFamily Назва вибраної родини шрифтів.
+ * @property textR Червоний канал кольору тексту.
+ * @property textG Зелений канал кольору тексту.
+ * @property textB Синій канал кольору тексту.
+ * @property bgR Червоний канал кольору фону.
+ * @property bgG Зелений канал кольору фону.
+ * @property bgB Синій канал кольору фону.
+ * @property backgroundImageUri Uri фонового зображення (якщо встановлено).
+ * @property iconName Назва вибраної іконки для кнопки дії.
+ * @property iconR Червоний канал кольору іконки.
+ * @property iconG Зелений канал кольору іконки.
+ * @property iconB Синій канал кольору іконки.
+ */
 @Entity(tableName = "design_config")
 data class DesignConfig(
     @PrimaryKey val id: Int = 1,

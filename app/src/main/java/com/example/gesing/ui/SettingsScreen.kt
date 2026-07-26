@@ -27,6 +27,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.example.gesing.data.DesignConfig
 
+/**
+ * Головний екран налаштувань дизайну.
+ * Дозволяє користувачу змінювати розмір шрифту, кольори тексту, кнопок та фону, вибирати іконки та імпортувати шрифти.
+ *
+ * @param viewModel ViewModel для управління станом конфігурації.
+ * @param onPreviewClick Коллбек для переходу до екрана попереднього перегляду.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
@@ -40,11 +47,12 @@ fun SettingsScreen(
     var showIconPicker by remember { mutableStateOf(false) }
     var showFontPicker by remember { mutableStateOf(false) }
 
+    // Лаунчер для вибору зображення з галереї
     val photoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri ->
             if (uri != null) {
-                // Take persistable permission to keep access after reboot
+                // Отримання постійного дозволу на читання файлу
                 val flag = Intent.FLAG_GRANT_READ_URI_PERMISSION
                 context.contentResolver.takePersistableUriPermission(uri, flag)
                 viewModel.updateConfig(config.copy(backgroundImageUri = uri.toString()))
@@ -52,10 +60,12 @@ fun SettingsScreen(
         }
     )
 
+    // Лаунчер для вибору файлу шрифту (.ttf, .otf)
     val fontPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
         onResult = { uri ->
             if (uri != null) {
+                // Визначення імені файлу для відображення
                 val fileName = context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
                     val nameIndex = cursor.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
                     cursor.moveToFirst()
@@ -85,6 +95,7 @@ fun SettingsScreen(
                 .padding(16.dp)
                 .verticalScroll(scrollState)
         ) {
+            // Налаштування розміру шрифту
             Text("Font Size: ${config.fontSize.toInt()}")
             Slider(
                 value = config.fontSize,
@@ -93,6 +104,7 @@ fun SettingsScreen(
             )
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Налаштування кольору тексту
             Text("Text Color (RGB)")
             ColorSliders(
                 r = config.textR,
@@ -104,6 +116,7 @@ fun SettingsScreen(
             )
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Вибір родини шрифтів
             Text("Font Family")
             val currentFontFamily = allFonts.find { it.first == config.fontFamily }?.second ?: FontFamily.Default
             OutlinedButton(
@@ -117,6 +130,7 @@ fun SettingsScreen(
             }
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Вибір фонового зображення
             Text("Background Image")
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(
@@ -142,6 +156,7 @@ fun SettingsScreen(
             }
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Налаштування іконки кнопки
             Text("Button Icon")
             IconButton(
                 onClick = { showIconPicker = true },
@@ -156,6 +171,7 @@ fun SettingsScreen(
             }
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Налаштування кольору іконки
             Text("Button Color (RGB)")
             ColorSliders(
                 r = config.iconR,
@@ -167,6 +183,7 @@ fun SettingsScreen(
             )
 
             Spacer(modifier = Modifier.height(16.dp))
+            // Налаштування кольору фону
             Text("Background Color (RGB)")
             ColorSliders(
                 r = config.bgR,
@@ -179,6 +196,7 @@ fun SettingsScreen(
         }
     }
 
+    // Діалог вибору іконки
     if (showIconPicker) {
         AlertDialog(
             onDismissRequest = { showIconPicker = false },
@@ -197,6 +215,7 @@ fun SettingsScreen(
         )
     }
 
+    // Діалог вибору шрифту з можливістю додавання нових
     if (showFontPicker) {
         AlertDialog(
             onDismissRequest = { showFontPicker = false },
@@ -243,6 +262,15 @@ fun SettingsScreen(
     }
 }
 
+/**
+ * Набір повзунків (RGB) для вибору кольору.
+ * Кожен повзунок розфарбований у відповідний колір каналу.
+ *
+ * @param r Поточне значення червоного каналу.
+ * @param g Поточне значення зеленого каналу.
+ * @param b Поточне значення синього каналу.
+ * @param onColorChange Коллбек, що повертає оновлені значення R, G, B.
+ */
 @Composable
 fun ColorSliders(
     r: Int,

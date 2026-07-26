@@ -18,12 +18,22 @@ import com.example.gesing.ui.DesignViewModelFactory
 import com.example.gesing.ui.NoteListScreen
 import com.example.gesing.ui.SettingsScreen
 
+/**
+ * Головна активність додатка, яка слугує точкою входу.
+ * Налаштовує базу даних, репозиторій, ViewModel та систему навігації Jetpack Compose.
+ */
 class MainActivity : ComponentActivity() {
+    /**
+     * Викликається під час створення активності. Ініціалізує компоненти додатка та встановлює вміст інтерфейсу.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
+        // Ініціалізація бази даних та репозиторію
         val database = AppDatabase.getDatabase(this)
         val repository = DesignRepository(this, database.designDao)
+
+        // Створення фабрики ViewModel для передачі залежностей
         val factory = DesignViewModelFactory(repository, this)
         val viewModel = ViewModelProvider(this, factory)[DesignViewModel::class.java]
 
@@ -35,6 +45,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     
+                    // Налаштування навігації між екраном налаштувань та переглядом
                     NavHost(navController = navController, startDestination = "settings") {
                         composable("settings") {
                             SettingsScreen(

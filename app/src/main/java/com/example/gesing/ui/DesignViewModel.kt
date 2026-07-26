@@ -12,11 +12,18 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.File
 
+/**
+ * ViewModel для управління станом дизайну додатка.
+ * Забезпечує доступ до конфігурації, списку шрифтів та методів їх оновлення.
+ */
 class DesignViewModel(
     private val repository: DesignRepository,
     private val context: Context
 ) : ViewModel() {
 
+    /**
+     * Поточна конфігурація дизайну, отримана з репозиторію.
+     */
     val config: StateFlow<DesignConfig> = repository.config
         .filterNotNull()
         .stateIn(
@@ -25,6 +32,10 @@ class DesignViewModel(
             initialValue = DesignConfig()
         )
 
+    /**
+     * Повний список доступних шрифтів, включаючи системні та кастомні.
+     * Кастомні шрифти завантажуються динамічно з файлової системи.
+     */
     val allFonts: StateFlow<List<Pair<String, FontFamily>>> = repository.customFonts
         .map { customList ->
             val dynamicFonts = customList.map { cf ->
@@ -39,12 +50,21 @@ class DesignViewModel(
             initialValue = AppFonts
         )
 
+    /**
+     * Оновлює конфігурацію дизайну в базі даних.
+     */
     fun updateConfig(newConfig: DesignConfig) {
         viewModelScope.launch {
             repository.saveConfig(newConfig)
         }
     }
 
+    /**
+     * Імпортує новий файл шрифту.
+     *
+     * @param uri Uri джерела файлу.
+     * @param name Назва шрифту.
+     */
     fun importFont(uri: Uri, name: String) {
         viewModelScope.launch {
             repository.importFont(uri, name)

@@ -18,14 +18,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
+/**
+ * Екран вибору іконок з підтримкою пошуку та пагінації.
+ * Розбиває великий список іконок на сторінки по 50 штук для забезпечення плавності роботи.
+ *
+ * @param onIconSelected Коллбек, що викликається при виборі іконки (повертає її назву).
+ */
 @Composable
 fun IconPickerScreen(
     onIconSelected: (String) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
     
-    // 1. Filter and 2. Sort alphabetically
-    // 3. Chunk into pages of 50
+    // 1. Фільтрація за назвою
+    // 2. Алфавітне сортування
+    // 3. Розбиття на сторінки (чанки)
     val iconPages = remember(searchQuery) {
         allCustomIcons
             .filter { it.first.contains(searchQuery, ignoreCase = true) }
@@ -41,7 +48,7 @@ fun IconPickerScreen(
             .height(600.dp)
             .padding(8.dp)
     ) {
-        // Search field
+        // Поле пошуку
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
@@ -69,7 +76,7 @@ fun IconPickerScreen(
                 Text("No icons found matching \"$searchQuery\"")
             }
         } else {
-            // 4. HorizontalPager for page navigation
+            // Горизонтальний пейджер для перемикання сторінок
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier.weight(1f),
@@ -77,7 +84,7 @@ fun IconPickerScreen(
             ) { pageIndex ->
                 val pageIcons = iconPages[pageIndex]
                 
-                // 5. LazyVerticalGrid for current page icons
+                // Сітка іконок поточної сторінки
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 64.dp),
                     modifier = Modifier.fillMaxSize(),
@@ -93,7 +100,7 @@ fun IconPickerScreen(
                 }
             }
             
-            // Page Indicator
+            // Індикатор поточної сторінки
             Text(
                 text = "Page ${pagerState.currentPage + 1} of ${iconPages.size}",
                 style = MaterialTheme.typography.bodySmall,
@@ -106,6 +113,10 @@ fun IconPickerScreen(
     }
 }
 
+/**
+ * Окремий елемент сітки вибору іконок.
+ * Відображає іконку та її коротку назву знизу.
+ */
 @Composable
 fun IconGridItem(
     name: String,

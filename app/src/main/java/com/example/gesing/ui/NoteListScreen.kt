@@ -24,6 +24,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.gesing.data.DesignConfig
 
+/**
+ * Екран попереднього перегляду дизайну.
+ * Відображає, як вибрані налаштування (кольори, шрифти, фон) виглядають на реальному контенті.
+ *
+ * @param viewModel ViewModel з поточними налаштуваннями дизайну.
+ * @param onBack Коллбек для повернення на екран налаштувань.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteListScreen(
@@ -33,6 +40,7 @@ fun NoteListScreen(
     val config by viewModel.config.collectAsState()
     val allFonts by viewModel.allFonts.collectAsState()
     
+    // Підготовка параметрів кольору та шрифту
     val textColor = Color(config.textR, config.textG, config.textB)
     val bgColor = Color(config.bgR, config.bgG, config.bgB)
     val fontFamily = allFonts.find { it.first == config.fontFamily }?.second ?: FontFamily.Default
@@ -57,6 +65,7 @@ fun NoteListScreen(
         }
     ) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+            // Відображення фонового зображення або суцільного кольору
             if (config.backgroundImageUri != null) {
                 AsyncImage(
                     model = config.backgroundImageUri,
@@ -69,6 +78,7 @@ fun NoteListScreen(
                 Box(modifier = Modifier.fillMaxSize().background(bgColor))
             }
 
+            // Приклад списку нотаток для демонстрації тексту
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
@@ -95,6 +105,7 @@ fun NoteListScreen(
                 }
             }
 
+            // Демонстрація плаваючої кнопки з вибраною іконкою
             IconButton(
                 onClick = { /* Action */ },
                 modifier = Modifier

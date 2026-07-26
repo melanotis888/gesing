@@ -4,6 +4,10 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import com.example.gesing.R
 
+/**
+ * Список стандартних шрифтів, які постачаються разом із додатком.
+ * Містить як вбудовані системні шрифти, так і локальні ресурси.
+ */
 val AppFonts = listOf(
     "Sans" to FontFamily.SansSerif,
     "Serif" to FontFamily.Serif,

@@ -1,10 +1,15 @@
 package com.example.gesing.data
 
+// Базові класи Android для роботи з контекстом та Uri
 import android.content.Context
 import android.net.Uri
+
+// Бібліотека Kotlin Coroutines для асинхронного виконання та потоків даних
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+
+// Стандартні класи Java для роботи з файловою системою
 import java.io.File
 import java.io.FileOutputStream
 

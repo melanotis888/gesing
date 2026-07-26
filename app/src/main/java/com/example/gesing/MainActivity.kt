@@ -1,18 +1,29 @@
 package com.example.gesing
 
+// Базові класи Android для роботи з активностями та станом додатка
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+
+// Jetpack Compose UI для створення розмітки та оформлення
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+
+// Класи для роботи з ViewModel та ін'єкцією залежностей
 import androidx.lifecycle.ViewModelProvider
+
+// Компоненти навігації Jetpack Compose
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+
+// Рівень даних: база даних та репозиторій
 import com.example.gesing.data.AppDatabase
 import com.example.gesing.data.DesignRepository
+
+// Рівень інтерфейсу: ViewModel, фабрика та екрани
 import com.example.gesing.ui.DesignViewModel
 import com.example.gesing.ui.DesignViewModelFactory
 import com.example.gesing.ui.NoteListScreen

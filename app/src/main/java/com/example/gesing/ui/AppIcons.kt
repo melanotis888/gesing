@@ -1,7 +1,10 @@
 package com.example.gesing.ui
 
+// Бібліотека іконок Material Design для Compose
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+
+// Базовий клас для векторних зображень у Compose
 import androidx.compose.ui.graphics.vector.ImageVector
 
 /**

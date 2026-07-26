@@ -1,6 +1,9 @@
 package com.example.gesing.data
 
+// Контекст Android для ініціалізації бази даних
 import android.content.Context
+
+// Компоненти Room для роботи з локальною БД
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

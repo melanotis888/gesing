@@ -1,6 +1,9 @@
 package com.example.gesing.data
 
+// Анотації Room для опису SQL-запитів та взаємодії з БД
 import androidx.room.*
+
+// Бібліотека Kotlin Coroutines для асинхронної роботи
 import kotlinx.coroutines.flow.Flow
 
 /**

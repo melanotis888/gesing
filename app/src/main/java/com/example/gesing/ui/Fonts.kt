@@ -1,7 +1,10 @@
 package com.example.gesing.ui
 
+// Jetpack Compose для роботи зі шрифтами
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+
+// Доступ до ресурсів проєкту
 import com.example.gesing.R
 
 /**

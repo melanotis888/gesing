@@ -1,19 +1,34 @@
 package com.example.gesing.ui
 
+// Компоненти Compose для обробки натискань та розмітки (Layout)
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+
+// Компоненти Compose для створення ледачих сіток (Lazy Grid)
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+
+// Компоненти Compose для пагінації (свайп між сторінками)
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+
+// Бібліотека іконок Material Design
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+
+// Компоненти Material Design 3: текстові поля, кнопки, тема
 import androidx.compose.material3.*
+
+// Compose Runtime для управління станом (state) та побічними ефектами
 import androidx.compose.runtime.*
+
+// Компоненти вирівнювання, модифікаторів та роботи з графікою
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+
+// Робота з текстом та одиницями виміру (dp)
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp

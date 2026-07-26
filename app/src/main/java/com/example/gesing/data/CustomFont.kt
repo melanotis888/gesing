@@ -1,5 +1,6 @@
 package com.example.gesing.data
 
+// Анотації Room для визначення сутностей бази даних
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

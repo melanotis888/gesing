@@ -1,16 +1,23 @@
 package com.example.gesing.ui
 
+// Компоненти Compose для фону, розмітки та ледачих списків
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+
+// Іконки Material Design з підтримкою автоматичного віддзеркалення
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+
+// Компоненти Material Design 3 та Compose Runtime
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+
+// Робота з графікою, кольорами, вирівнюванням та текстом
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
@@ -21,7 +28,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+// Бібліотека Coil для асинхронного завантаження зображень
 import coil.compose.AsyncImage
+
+// Конфігурація дизайну з рівня даних
 import com.example.gesing.data.DesignConfig
 
 /**

@@ -1,8 +1,13 @@
 package com.example.gesing.ui
 
+// Контекст Android для передачі у ViewModel
 import android.content.Context
+
+// Компоненти Lifecycle для створення фабрики ViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+
+// Репозиторій даних для роботи з конфігурацією
 import com.example.gesing.data.DesignRepository
 
 /**

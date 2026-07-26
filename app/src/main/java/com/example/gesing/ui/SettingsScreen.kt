@@ -1,30 +1,43 @@
 package com.example.gesing.ui
 
+// Наміри (Intent) та Uri для вибору медіафайлів
 import android.content.Intent
 import android.net.Uri
+
+// Активності та контракти для роботи з системними провідниками (File/Photo Pickers)
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+
+// Компоненти Compose для обробки натискань, розмітки, прокрутки та списків
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+
+// Бібліотека іконок Material Design
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Visibility
+
+// Компоненти Material Design 3 та Compose Runtime для управління станом
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+
+// Компоненти вирівнювання, кольорів, роботи з платформою та шрифтами
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+
+// Конфігурація дизайну з рівня даних
 import com.example.gesing.data.DesignConfig
 
 /**
